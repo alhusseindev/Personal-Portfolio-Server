@@ -1,0 +1,17 @@
+FROM node
+WORKDIR /usr/src/app
+#install app dependencies
+COPY ./package.json ./
+
+
+RUN npm install -g nodemon
+RUN npm install
+#copy app to the container
+COPY . .
+
+
+CMD ["nodemon", "server.js"]
+EXPOSE 5000
+
+#Run the script in package.json
+#CMD ["yarn", "start"]
